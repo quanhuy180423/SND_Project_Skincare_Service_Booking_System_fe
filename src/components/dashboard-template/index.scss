@@ -1,0 +1,81 @@
+.dashboard-container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+  .table-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #333;
+  }
+
+  .table-header {
+    display: flex;
+
+    align-items: center;
+    margin-bottom: 16px;
+     
+    .search-input {
+      width: 250px;
+      height: 40px;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+  }
+
+  .create-button {
+    margin-bottom: 16px;
+
+    button {
+      background: #1890ff;
+      color: white;
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #40a9ff;
+      }
+
+      &:active {
+        background: #096dd9;
+      }
+    }
+  }
+}
+.table-header {
+  display: flex;
+  gap: 10px; // Khoảng cách giữa Input và Button
+  align-items: center;
+
+  .search-input {
+    width: 250px;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  .search-button {
+    background: #52c41a; // Màu xanh nhẹ
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #73d13d;
+    }
+
+    &:active {
+      background: #389e0d;
+    }
+  }
+}
