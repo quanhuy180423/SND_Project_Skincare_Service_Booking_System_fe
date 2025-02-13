@@ -10,6 +10,7 @@ import StaffPage from "./pages/staff-page";
 import DashboardStatistic from "./pages/dashboard-statistics";
 import ServicePage from "./pages/service-page";
 import LoginPage from "./pages/login-page";
+import RegisterPage from "./pages/register-page";
 function App() {
   return (
     <Routes>
@@ -24,7 +25,7 @@ function App() {
        
       </Route>
       <Route path={PATHS.LOGIN_PAGE} element={<LoginPage />} />
-      <Route path={PATHS.REGISTER_PAGE} element={<LoginPage />} />
+      <Route path={PATHS.REGISTER_PAGE} element={<RegisterPage />} />
     </Routes>
   );
 }

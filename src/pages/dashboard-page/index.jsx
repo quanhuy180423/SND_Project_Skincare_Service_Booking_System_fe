@@ -2,45 +2,61 @@ import { useState } from "react";
 import {
   DesktopOutlined,
   FileOutlined,
+  LogoutOutlined,
   PieChartOutlined,
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import "./index.scss";
 import { Layout, Menu, theme } from "antd";
-import { Link, Outlet } from "react-router-dom";
-const {  Content, Sider } = Layout;
-function getItem(label, key, icon, children) {
+import { Link, Outlet, useNavigate } from "react-router-dom";
+const { Content, Sider } = Layout;
+function getItem(label, key, icon, children, onClick) {
   return {
     key,
     icon,
     children,
-    label: <Link to={`/dashboard/${key}`}>{label}</Link>,
+    label: onClick ? (
+      <span onClick={onClick} style={{ cursor: "pointer" }}>
+        {label}
+      </span>
+    ) : (
+      <Link to={`/dashboard/${key}`}>{label}</Link>
+    ),
   };
 }
-const items = [
-  getItem("Dashboard", "", <PieChartOutlined />),
-  getItem("Customer", "customer", <DesktopOutlined />),
-  getItem("Staff", "staff", <UserOutlined />),
-  getItem("Therapist", "staff/", <TeamOutlined />),
-  getItem(
-    "View specialist schedule",
-    "View-specialist-chedule",
-    <FileOutlined />
-  ),
 
-  getItem("Service", "service", <PieChartOutlined />),
-  getItem("Blog", "blog", <DesktopOutlined />),
-  getItem("Event", "event", <UserOutlined />),
-  getItem(
-    "Rating & Feedback Therapist",
-    "Rating-FeedbackTherapist",
-    <TeamOutlined />
-  ),
-  getItem("Logout", "login", <FileOutlined />),
-];
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
+  const handleLogout = () => {
+    navigate("/login");
+  };
+  const items = [
+    getItem("Dashboard", "", <PieChartOutlined />),
+    getItem("Customer", "customer", <DesktopOutlined />),
+    getItem("Staff", "staff", <UserOutlined />),
+    getItem("Therapist", "staff/", <TeamOutlined />),
+    getItem(
+      "View specialist schedule",
+      "View-specialist-chedule",
+      <FileOutlined />
+    ),
+
+    getItem("Service", "service", <PieChartOutlined />),
+    getItem("Blog", "blog", <DesktopOutlined />),
+    getItem("Event", "event", <UserOutlined />),
+    getItem(
+      "Rating & Feedback Therapist",
+      "Rating-FeedbackTherapist",
+      <TeamOutlined />
+    ),
+    {
+      key: "logout",
+      icon: <LogoutOutlined />,
+      label: <div onClick={handleLogout}><span>Logout</span></div>,
+    },
+  ];
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -58,7 +74,7 @@ const Dashboard = () => {
       >
         <div className="demo-logo-vertical" />
         <div className="admin-section">
-        <UserOutlined className="admin-icon" />
+          <UserOutlined className="admin-icon" />
 
           <span className="admin-text">{collapsed ? "" : "Admin"}</span>
         </div>
@@ -72,7 +88,6 @@ const Dashboard = () => {
       </Sider>
 
       <Layout>
-        
         <Content
           style={{
             margin: "0 16px",
