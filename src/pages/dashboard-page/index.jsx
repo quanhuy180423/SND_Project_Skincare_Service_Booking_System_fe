@@ -25,8 +25,8 @@ function getItem(label, key, icon, children, onClick) {
     ),
   };
 }
-<<<<<<< HEAD
-=======
+
+
 const items = [
   getItem("Dashboard", "", <PieChartOutlined />),
   getItem("Customer", "customer", <DesktopOutlined />),
@@ -37,7 +37,7 @@ const items = [
     "View-specialist-chedule",
     <FileOutlined />
   ),
->>>>>>> main
+]
 
 const Dashboard = () => {
   const navigate = useNavigate();

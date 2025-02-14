@@ -10,15 +10,13 @@ import StaffPage from "./pages/staff-page";
 import DashboardStatistic from "./pages/dashboard-statistics";
 import ServicePage from "./pages/service-page";
 import LoginPage from "./pages/login-page";
-<<<<<<< HEAD
 import RegisterPage from "./pages/register-page";
-=======
 import BlogPage from "./pages/blog-page";
 import RatingPage from "./pages/rating-page";
 import ViewSpecialist from './pages/view-specialist-calendar-page'
 
 
->>>>>>> main
+
 function App() {
   return (
     <Routes>
