@@ -21,7 +21,7 @@ function getItem(label, key, icon, children) {
 const items = [
   getItem("Dashboard", "", <PieChartOutlined />),
   getItem("Customer", "customer", <DesktopOutlined />),
-  getItem("Staff", "staff", <UserOutlined />),
+  getItem("User", "staff", <UserOutlined />),
   getItem("Therapist", "staff/", <TeamOutlined />),
   getItem(
     "View specialist schedule",

@@ -10,6 +10,11 @@ import StaffPage from "./pages/staff-page";
 import DashboardStatistic from "./pages/dashboard-statistics";
 import ServicePage from "./pages/service-page";
 import LoginPage from "./pages/login-page";
+import BlogPage from "./pages/blog-page";
+import RatingPage from "./pages/rating-page";
+import ViewSpecialist from './pages/view-specialist-calendar-page'
+
+
 function App() {
   return (
     <Routes>
@@ -21,6 +26,9 @@ function App() {
         <Route path={PATHS.MANAGE_STAFF} element={<StaffPage />} />
         <Route path={""} element={<DashboardStatistic />} />
         <Route path={PATHS.SERVICE_PAGE} element={<ServicePage />} />
+        <Route path={PATHS.BlogPage} element={<BlogPage />} />
+        <Route path={PATHS.RatingPage} element={<RatingPage />} />
+        <Route path={PATHS.ViewSpecialist} element={<ViewSpecialist />} />
        
       </Route>
       <Route path={PATHS.LOGIN_PAGE} element={<LoginPage />} />
