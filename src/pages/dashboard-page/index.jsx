@@ -26,6 +26,19 @@ function getItem(label, key, icon, children, onClick) {
   };
 }
 
+
+const items = [
+  getItem("Dashboard", "", <PieChartOutlined />),
+  getItem("Customer", "customer", <DesktopOutlined />),
+  getItem("User", "staff", <UserOutlined />),
+  getItem("Therapist", "staff/", <TeamOutlined />),
+  getItem(
+    "View specialist schedule",
+    "View-specialist-chedule",
+    <FileOutlined />
+  ),
+]
+
 const Dashboard = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);

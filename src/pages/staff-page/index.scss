@@ -100,4 +100,72 @@
       }
     }
   }
+  .create-button-staff {
+    margin-top: 16px;
+  
+    button {
+      background: #1890ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 8px 16px;
+  
+      &:hover {
+        background: #096dd9;
+      }
+    }
+  }
+  .create-button-customer {
+    margin-top: 16px;
+    margin-left: 10px;
+  
+    button {
+      background: #1890ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 8px 16px;
+  
+      &:hover {
+        background: #096dd9;
+      }
+    }
+  }
+  .create-button-therapist {
+    margin-top: 16px;
+    margin-left: 10px;
+    button {
+      background: #1890ff;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      padding: 8px 16px;
+  
+      &:hover {
+        background: #096dd9;
+      }
+    }
+  }
+  .bg-button{
+    display: flex;
+    justify-content: space-between;
+   
+    
+  }
+  .tab-button {
+    padding: 10px 16px;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: #f0f0f0;
+  
+    border-radius: 5px;
+    color: black; 
+  }
+  
+  .tab-button.active {
+    background-color: #1890ff; 
+    color: white; 
+    transform: scale(1.1);
+  }
   

@@ -8,6 +8,8 @@ const StaffPage = () => {
   const [open, setOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState("");
   const [form] = useForm();
+  const [activeTab, setActiveTab] = useState("staff"); 
+  const [title, setTitle] = useState("Staff");
 
   const handleOpenModalCreate = () => {
     setOpen(true);
@@ -17,6 +19,12 @@ const StaffPage = () => {
     setOpen(false);
     form.resetFields();
     setSelectedRole("");
+  };
+
+  
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setTitle(tab.charAt(0).toUpperCase() + tab.slice(1)); 
   };
 
   const columns = [
@@ -74,19 +82,44 @@ const StaffPage = () => {
   return (
     <div className="dashboard-container">
       {/* Tiêu đề bảng */}
-      <h2 className="table-title">Staff</h2>
+      <h2 className="table-title">{title}</h2>
 
       {/* Ô tìm kiếm */}
       <div className="table-header">
         <Input placeholder=" Search..." className="search-input" />
         <Button className="search-button">🔎 Search</Button>
       </div>
+      <div className="bg-button">
+        <div className="create-button">
+          <Button onClick={handleOpenModalCreate}>
+            <PlusOutlined />
+            Create
+          </Button>
 
-      <div className="create-button">
-        <Button onClick={handleOpenModalCreate}>
-          <PlusOutlined />
-          Create
-        </Button>
+
+        </div>
+        <div className="bg-button-right">
+          <Button
+            onClick={() => handleTabChange("staff")}
+            className={`tab-button ${activeTab === "staff" ? "active" : ""}`}
+          >
+            Staff
+          </Button>
+
+          <Button
+            onClick={() => handleTabChange("customer")}
+            className={`tab-button ${activeTab === "customer" ? "active" : ""}`}
+          >
+            Customer
+          </Button>
+
+          <Button
+            onClick={() => handleTabChange("therapist")}
+            className={`tab-button ${activeTab === "therapist" ? "active" : ""}`}
+          >
+            Therapist
+          </Button>
+        </div>
       </div>
 
       {/* Bảng dữ liệu */}
