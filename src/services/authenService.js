@@ -2,6 +2,7 @@
 
 import axiosInstance from "@/utils/axiosInstance";
 import { localToken } from "@/utils/token";
+import { param } from "jquery";
 
 export const authenService = {
   login(payload = {}) {
@@ -21,6 +22,26 @@ export const authenService = {
         "Content-Type": `multipart/form-data`,                           
       },
     });
+  },
+
+  // getAllUser
+  getUser(apiURI, page, limit){
+    return axiosInstance.get(apiURI, {params: {page,limit}})
+  },
+
+  // block account
+  blockAccount(userId){
+    return axiosInstance.patch(`user/updateStatus/${userId}`, {status: false})
+  },
+
+  // unblock account
+  unBlockAccount(userId){
+    return axiosInstance.patch(`user/updateStatus/${userId}`, {status: true})
+  },
+  // create new staff
+
+  createNewStaff(payload = {}){
+    return axiosInstance.post(`user/createByAdmin`,payload )
   },
   getProvince(){
     return axiosInstance.get(`/provinces`)

@@ -13,29 +13,32 @@ import LoginPage from "./pages/login-page";
 import RegisterPage from "./pages/register-page";
 import BlogPage from "./pages/blog-page";
 import RatingPage from "./pages/rating-page";
-import ViewSpecialist from './pages/view-specialist-calendar-page'
-
-
+import ViewSpecialist from "./pages/view-specialist-calendar-page";
+import ManageTherapist from "./pages/manage-therapist";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <Routes>
-      <Route path={PATHS.HOME} element={<MainLayout />}>
-        <Route index element={<HomePage />} />
-      </Route>
-      <Route path={PATHS.DASHBOARD} element={<Dashboard />}>
-        <Route path={PATHS.MANAGE_CUSTOMER} element={<ManageCustomer />} />
-        <Route path={PATHS.MANAGE_STAFF} element={<StaffPage />} />
-        <Route path={""} element={<DashboardStatistic />} />
-        <Route path={PATHS.SERVICE_PAGE} element={<ServicePage />} />
-        <Route path={PATHS.BlogPage} element={<BlogPage />} />
-        <Route path={PATHS.RatingPage} element={<RatingPage />} />
-        <Route path={PATHS.ViewSpecialist} element={<ViewSpecialist />} />
-       
-      </Route>
-      <Route path={PATHS.LOGIN_PAGE} element={<LoginPage />} />
-      <Route path={PATHS.REGISTER_PAGE} element={<RegisterPage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path={PATHS.HOME} element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+        <Route path={PATHS.DASHBOARD} element={<Dashboard />}>
+          <Route path={PATHS.MANAGE_CUSTOMER} element={<ManageCustomer />} />
+          <Route path={PATHS.MANAGE_STAFF} element={<StaffPage />} />
+          <Route path={PATHS.MANAGE_THERAPIST} element={<ManageTherapist />} />
+          <Route path={""} element={<DashboardStatistic />} />
+          <Route path={PATHS.SERVICE_PAGE} element={<ServicePage />} />
+          <Route path={PATHS.BlogPage} element={<BlogPage />} />
+          <Route path={PATHS.RatingPage} element={<RatingPage />} />
+          <Route path={PATHS.ViewSpecialist} element={<ViewSpecialist />} />
+        </Route>
+        <Route path={PATHS.LOGIN_PAGE} element={<LoginPage />} />
+        <Route path={PATHS.REGISTER_PAGE} element={<RegisterPage />} />
+      </Routes>
+      <ToastContainer />
+    </>
   );
 }
 

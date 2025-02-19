@@ -1,62 +1,55 @@
 import DashboardTemplate from "@/components/dashboard-template";
 import { Button } from "antd";
 import "./index.scss";
+import dayjs from "dayjs";
 
 const ManageCustomer = () => {
   const columns = [
     {
-      title: "Id",
-      dataIndex: "id",
-      key: "id",
+      title: "_Id",
+      dataIndex: "_id",
+      key: "_id",
     },
+
     {
       title: "Name",
       dataIndex: "name",
       key: "name",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      key: "Address",
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
     },
     {
-      title: "Phone",
-      dataIndex: "phone",
-      key: "Phone",
+      title: "Role",
+      dataIndex: "role",
+      key: "role",
     },
     {
-      title: "CreateAt",
-      dataIndex: "createAt",
-      key: "CreateAt",
+      title: "CreatedAt",
+      dataIndex: "createdAt",
+      key: "createdAt",
+      render: (value) => dayjs(value).format("DD/MM/YYYY"),
     },
     {
-      title: "Action",
-      dataIndex: "id",
-      key: "id",
-      render: () => (
-        <div className="action-buttons">
-          <Button className="block-btn">
-            <span>🛑 Block</span>
-          </Button>
-          <Button className="unblock-btn">
-            <span>🔓 Unblock</span>
-          </Button>
-        </div>
-      ),
+      title: "Status",
+      dataIndex: "status",
+      key: "status",
+      render: (status) => (status ? <p>true</p> : <p>false</p>),
     },
   ];
 
-  const data = [
-    {
-      id: "jkfbk",
-      name: "gjnbngk",
-      address: "fkbhfbfj",
-      phone: "fjvbfhk",
-      createAt: "jgnjgkngjb",
-    },
-  ];
-
-  return <DashboardTemplate columns={columns} data={data} headindText={"Customer"} showCreateButton={false}/>;
+  return (
+    <DashboardTemplate
+      apiURI={"user/getCustomer"}
+      status={false}
+      createName={"Customer Account"}
+      columns={columns}
+      headindText={"Customer"}
+      showCreateButton={false}
+    />
+  );
 };
 
 export default ManageCustomer;
