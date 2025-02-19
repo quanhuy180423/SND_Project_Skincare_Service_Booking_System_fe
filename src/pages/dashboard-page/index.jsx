@@ -26,19 +26,6 @@ function getItem(label, key, icon, children, onClick) {
   };
 }
 
-
-const items = [
-  getItem("Dashboard", "", <PieChartOutlined />),
-  getItem("Customer", "customer", <DesktopOutlined />),
-  getItem("User", "staff", <UserOutlined />),
-  getItem("Therapist", "staff/", <TeamOutlined />),
-  getItem(
-    "View specialist schedule",
-    "View-specialist-chedule",
-    <FileOutlined />
-  ),
-]
-
 const Dashboard = () => {
   const navigate = useNavigate();
   const [collapsed, setCollapsed] = useState(false);
@@ -47,9 +34,12 @@ const Dashboard = () => {
   };
   const items = [
     getItem("Dashboard", "", <PieChartOutlined />),
-    getItem("Customer", "customer", <DesktopOutlined />),
-    getItem("Staff", "staff", <UserOutlined />),
-    getItem("Therapist", "staff/", <TeamOutlined />),
+    getItem("Manage account", "", <PieChartOutlined />, [
+      getItem("Manage Customer", "customer", <DesktopOutlined />),
+      getItem("Manage Staff", "staff", <DesktopOutlined />),
+      getItem("Manage Therapist", "therapist", <DesktopOutlined />),
+    ]),
+
     getItem(
       "View specialist schedule",
       "View-specialist-chedule",
@@ -67,7 +57,11 @@ const Dashboard = () => {
     {
       key: "logout",
       icon: <LogoutOutlined />,
-      label: <div onClick={handleLogout}><span>Logout</span></div>,
+      label: (
+        <div onClick={handleLogout}>
+          <span>Logout</span>
+        </div>
+      ),
     },
   ];
   const {

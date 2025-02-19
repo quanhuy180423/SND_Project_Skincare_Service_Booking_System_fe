@@ -15,6 +15,7 @@ export const PATHS = {
   USER:"staff",
   MANAGE_CUSTOMER: "customer",
   MANAGE_STAFF: "staff",
+  MANAGE_THERAPIST: "therapist",
   SERVICE_PAGE: "service",
   BlogPage:"blog",
   RatingPage:"Rating-FeedbackTherapist",
