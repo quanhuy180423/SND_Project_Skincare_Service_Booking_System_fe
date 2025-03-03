@@ -1,41 +1,103 @@
 .service-page {
-    padding: 20px;
-  }
-  
-  .action-buttons {
-    display: flex;
-    gap: 10px;
-  
-    .detail-btn {
-      background-color: #1890ff;
-      color: white;
-      font-weight: 600;
-      border-radius: 6px;
-      transition: 0.3s;
-      &:hover {
-        background-color: #40a9ff;
-      }
-    }
-  
-    .hide-btn {
-      background-color: #ff4d4f;
-      color: white;
-      font-weight: 600;
-      border-radius: 6px;
-      transition: 0.3s;
-      &:hover {
-        background-color: #ff7875;
-      }
+  padding: 20px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+
+  .detail-btn {
+    background-color: #1890ff;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #40a9ff;
     }
   }
-  
-  .service-detail {
-    h3 {
-      color: #1890ff;
-    }
-    p {
-      margin: 5px 0;
-      font-size: 16px;
+
+  .hide-btn {
+    background-color: #ff4d4f;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #ff7875;
     }
   }
-  
+
+  .dlt-btn {
+    background-color: #7ca804;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #ff7875;
+    }
+  }
+
+}
+
+.action-buttons2 {
+  display: flex;
+  justify-content: flex-end;
+
+  .update-btn {
+    background-color: #11e0e3;
+    color: white;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #ff7875;
+    }
+  }
+}
+
+.create-button {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.btn-avail {
+  display: flex;
+  gap: 10px;
+}
+
+.tab-button {
+  padding: 10px 16px;
+  margin-right: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  color: black;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab-button.active {
+  background-color: #1890ff;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+.service-detail {
+  h3 {
+    color: #1890ff;
+  }
+
+  p {
+    margin: 5px 0;
+    font-size: 16px;
+  }
+}
