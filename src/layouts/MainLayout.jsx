@@ -6,16 +6,11 @@ function MainLayout() {
   return (
     <MainContextProvider>
       {/* <AuthenContextProvider> */}
-        <div className="page-wrapper">
-          <Header />
-          <Outlet />
-          <Footter />
-        </div>
-       
-
-        <button id="scroll-top" title="Back to Top">
-          <i className="icon-arrow-up"></i>
-        </button>
+      <div className="page-wrapper">
+        <Header />
+        <Outlet />
+        <Footter />
+      </div>
       {/* </AuthenContextProvider> */}
     </MainContextProvider>
   );
