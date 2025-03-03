@@ -7,7 +7,7 @@ import Dashboard from "./pages/dashboard-page";
 import "./index.css";
 import ManageCustomer from "./pages/manage-customer";
 import StaffPage from "./pages/staff-page";
-import DashboardStatistic from "./pages/dashboard-statistics";
+import DashboardStatistic from "./pages/dashboard-statistidddcs";
 import ServicePage from "./pages/service-page";
 import LoginPage from "./pages/login-page";
 import RegisterPage from "./pages/register-page";
