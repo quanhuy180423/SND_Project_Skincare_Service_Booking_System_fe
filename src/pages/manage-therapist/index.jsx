@@ -1,16 +1,18 @@
 import DashboardTemplate from "@/components/dashboard-template";
-import { Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import "./index.scss";
 import dayjs from "dayjs";
 
-const ManageCustomer = () => {
+const ManageTherapist = () => {
   const columns = [
+    
     {
       title: "_Id",
       dataIndex: "_id",
       key: "_id",
-    },
 
+    },
+   
     {
       title: "Name",
       dataIndex: "name",
@@ -30,15 +32,19 @@ const ManageCustomer = () => {
       title: "CreatedAt",
       dataIndex: "createdAt",
       key: "createdAt",
-      render: (value) => dayjs(value).format("DD/MM/YYYY"),
+      render: (value) => dayjs(value).format("DD/MM/YYYY")
     },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (status) => (status ? <p>true</p> : <p>false</p>),
+      render: (status) => 
+        status ? <p>true</p> : <p>false</p>
+      
     },
+    
   ];
+
   const formItem = (
     <>
       <Form.Item
@@ -128,19 +134,8 @@ const ManageCustomer = () => {
         <Input placeholder="Enter role" />
       </Form.Item>
     </>
-  );
-  return (
-    <DashboardTemplate apiCreate={"user/createByAdmin"}
-      titleModal={"Staff information"}
-      formItem={formItem}
-      apiURI={"user/getStaff"}
-      status={true}
-      createName={"Staff Account"}
-      columns={columns}
-      headindText={"Staff"}
-      showCreateButton={true}
-    />
-  );
+  )
+  return <DashboardTemplate titleModal={"Therapist information"} formItem={formItem} apiCreate={"user/createByAdmin"} apiURI={"user/getTherapist"} status={true} createName={"Therapist Account"}   columns={columns}  headindText={"Therapist"} showCreateButton={true}/>;
 };
 
-export default ManageCustomer;
+export default ManageTherapist;
