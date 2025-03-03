@@ -1,19 +1,3 @@
-// import { PATHS } from "@/constant/path";
-// import { Link } from "react-router-dom";
-
-// const Footer = () => {
-//   return (
-//     <footer className="footer">
-//       <div className="footer-middle">
-
-//       Hello from footer
-//       </div>
-//     </footer>
-//   );
-// };
-
-// export default Footer;
-
 import { AppBar, Box, Typography, Link as MuiLink } from "@mui/material";
 import {
   Facebook,
@@ -27,10 +11,21 @@ import {
 
 function Footer() {
   return (
+    // <AppBar
+    //   position="fixed"
+    //   sx={{
+    //     top: "auto",
+    //     bottom: 0,
+    //     left: 0,
+    //     // width: "100%",
+    //     backgroundColor: "#FBCEB1",
+    //     padding: 2,
+    //   }}
+    // >
     <AppBar position="relative" sx={{ backgroundColor: "#FBCEB1", padding: 5 }}>
       <Box display="flex" justifyContent="space-between" flexWrap="wrap">
         {/* Logo và giới thiệu */}
-        <Box maxWidth={420} textAlign="left">
+        <Box flex={1} maxWidth={420} textAlign="left">
           <Box
             display="flex"
             alignItems="center"
@@ -56,65 +51,89 @@ function Footer() {
             Theo dõi chúng tôi tại:
           </Typography>
           <Box display="flex" gap={1} mt={1}>
-            <MuiLink href="#" color="inherit" sx={{ color: "#4B3621" }}>
+            <MuiLink
+              href="#"
+              color="inherit"
+              sx={{
+                color: "#4B3621",
+                textDecoration: "none",
+                fontSize: "1.1rem",
+              }}
+            >
               <Facebook />
             </MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ color: "#4B3621" }}>
+            <MuiLink
+              href="#"
+              color="inherit"
+              sx={{
+                color: "#4B3621",
+                textDecoration: "none",
+                fontSize: "1.1rem",
+              }}
+            >
               <Instagram />
             </MuiLink>
-            <MuiLink href="#" color="inherit" sx={{ color: "#4B3621" }}>
+            <MuiLink
+              href="#"
+              color="inherit"
+              sx={{
+                color: "#4B3621",
+                textDecoration: "none",
+                fontSize: "1.1rem",
+              }}
+            >
               <YouTube />
             </MuiLink>
           </Box>
         </Box>
 
         {/* Thông tin liên hệ */}
-        <Box>
+        <Box sx={{ flex: 1, marginLeft: 10 }}>
           <Typography
             variant="h6"
             fontWeight="bold"
             mb={1}
-            sx={{ color: "#4B3621" }}
+            sx={{ color: "#4B3621", fontSize: "1.3rem" }}
           >
             Thông tin liên hệ
           </Typography>
 
           <Box display="flex" alignItems="center" mb={1}>
             <LocationOn sx={{ marginRight: 1, color: "#4B3621" }} />
-            <Typography sx={{ color: "#4B3621" }}>
+            <Typography sx={{ color: "#4B3621", fontSize: "1.1rem" }}>
               Địa chỉ: S10.02 Vinhomes Grand Park{" "}
             </Typography>
           </Box>
 
           <Box display="flex" alignItems="center" mb={1}>
             <Phone sx={{ marginRight: 1, color: "#4B3621" }} />
-            <Typography sx={{ color: "#4B3621" }}>
+            <Typography sx={{ color: "#4B3621", fontSize: "1.1rem" }}>
               Hotline: 1900 9009{" "}
             </Typography>
           </Box>
 
           <Box display="flex" alignItems="center" mb={1}>
             <Email sx={{ marginRight: 1, color: "#4B3621" }} />
-            <Typography sx={{ color: "#4B3621" }}>
+            <Typography sx={{ color: "#4B3621", fontSize: "1.1rem" }}>
               Email: spa@fpt.edu.vn{" "}
             </Typography>
           </Box>
 
           <Box display="flex" alignItems="center" mb={1}>
             <AccessTime sx={{ marginRight: 1, color: "#4B3621" }} />
-            <Typography sx={{ color: "#4B3621" }}>
+            <Typography sx={{ color: "#4B3621", fontSize: "1.1rem" }}>
               Thời gian làm việc: 7h - 22h{" "}
             </Typography>
           </Box>
         </Box>
 
         {/* Chính sách chung */}
-        <Box>
+        <Box sx={{ flex: 1, marginLeft: 5 }}>
           <Typography
             variant="h6"
             fontWeight="bold"
             mb={1}
-            sx={{ color: "#4B3621" }}
+            sx={{ color: "#4B3621", fontSize: "1.3rem" }}
           >
             Chính sách chung
           </Typography>
@@ -122,7 +141,12 @@ function Footer() {
             href="#"
             color="inherit"
             display="block"
-            sx={{ color: "#4B3621" }}
+            sx={{
+              color: "#4B3621",
+              textDecoration: "none",
+              mb: 2,
+              fontSize: "1.1rem",
+            }}
           >
             Chính sách bảo mật thông tin
           </MuiLink>
@@ -130,7 +154,12 @@ function Footer() {
             href="#"
             color="inherit"
             display="block"
-            sx={{ color: "#4B3621" }}
+            sx={{
+              color: "#4B3621",
+              textDecoration: "none",
+              mb: 2,
+              fontSize: "1.1rem",
+            }}
           >
             Điều khoản sử dụng
           </MuiLink>
@@ -138,7 +167,12 @@ function Footer() {
             href="#"
             color="inherit"
             display="block"
-            sx={{ color: "#4B3621" }}
+            sx={{
+              color: "#4B3621",
+              textDecoration: "none",
+              mb: 2,
+              fontSize: "1.1rem",
+            }}
           >
             Tuyển dụng
           </MuiLink>
@@ -146,19 +180,24 @@ function Footer() {
             href="#"
             color="inherit"
             display="block"
-            sx={{ color: "#4B3621" }}
+            sx={{
+              color: "#4B3621",
+              textDecoration: "none",
+              mb: 2,
+              fontSize: "1.1rem",
+            }}
           >
             Tiếp nhận ý kiến phản ánh
           </MuiLink>
         </Box>
 
         {/* Dịch vụ nổi bật */}
-        <Box>
+        <Box sx={{ marginRight: 10 }}>
           <Typography
             variant="h6"
             fontWeight="bold"
             mb={1}
-            sx={{ color: "#4B3621" }}
+            sx={{ color: "#4B3621", fontSize: "1.3rem" }}
           >
             Dịch vụ nổi bật
           </Typography>
@@ -166,7 +205,12 @@ function Footer() {
             href="#"
             color="inherit"
             display="block"
-            sx={{ color: "#4B3621" }}
+            sx={{
+              color: "#4B3621",
+              textDecoration: "none",
+              mb: 2,
+              fontSize: "1.1rem",
+            }}
           >
             Nặn mụn chuyên sâu
           </MuiLink>
@@ -174,7 +218,12 @@ function Footer() {
             href="#"
             color="inherit"
             display="block"
-            sx={{ color: "#4B3621" }}
+            sx={{
+              color: "#4B3621",
+              textDecoration: "none",
+              mb: 2,
+              fontSize: "1.1rem",
+            }}
           >
             Dưỡng trắng da
           </MuiLink>
@@ -182,7 +231,12 @@ function Footer() {
             href="#"
             color="inherit"
             display="block"
-            sx={{ color: "#4B3621" }}
+            sx={{
+              color: "#4B3621",
+              textDecoration: "none",
+              mb: 2,
+              fontSize: "1.1rem",
+            }}
           >
             Tiêm meso trắng da
           </MuiLink>

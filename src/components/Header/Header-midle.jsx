@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   AppBar,
   Toolbar,
@@ -16,12 +16,49 @@ import {
 } from "@mui/material";
 import { Search, Menu } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { logout, selectUser } from "../../redux/features/counterSlice";
+
+import { handleLogin, handleLogout } from "../../store/Reducer/authReducer";
 
 function HeaderMidle() {
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
   const [inputSearch, setInputSearch] = useState("");
   const [openDrawer, setOpenDrawer] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Kiểm tra màn hình nhỏ hơn "md" (960px)
+
+  // const navigate = useNavigate();
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const { loading } = useSelector((state) => state.auth);
+
+  // const handleMenuClick = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  // const handleMenuClose = () => {
+  //   setAnchorEl(null);
+  // };
+
+  // const handleLogOut = () => {
+  //   dispatch(logout());
+  //   toast.success("Đăng xuất thành công!");
+  //   navigate("/"); // Quay về trang chủ
+  //   handleMenuClose();
+  // };
+
+  // const handleLogin = () => {
+  //   console.log("login nènè");
+  //   dispatch({
+  //     type: "user/login",
+  //     payload: { id: 2, phone: "0984456284" },
+  //   });
+  // };
 
   const handleSearch = () => {
     sessionStorage.setItem("search", "true");
@@ -30,12 +67,20 @@ function HeaderMidle() {
 
   const navLinks = [
     { to: "/", text: "Trang chủ" },
-    { to: "/introduction", text: "Giới thiệu" },
+    { to: "/about", text: "Giới thiệu" },
     { to: "/price-list", text: "Bảng giá" },
     { to: "/treatment-plan", text: "Liệu trình" },
-    { to: "/connect", text: "Liên hệ" },
+    { to: "/contact", text: "Liên hệ" },
     { to: "/news", text: "Tin tức" },
   ];
+
+  // useEffect(() => {
+  //   if (user) {
+  //     fetchProfileData();
+  //   } else {
+  //     console.log("User not logged in, skipping fetch profile data.");
+  //   }
+  // }, [user]);
 
   return (
     <AppBar
@@ -95,7 +140,7 @@ function HeaderMidle() {
           )}
         </Box>
 
-        {/* Search + Button */}
+        {/* Search + Đặt lịch */}
         {!isMobile && (
           <Box display="flex" alignItems="center">
             <Box
@@ -113,7 +158,23 @@ function HeaderMidle() {
                 placeholder="Nhập tên dịch vụ cần tìm"
                 onChange={(e) => setInputSearch(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                sx={{ fontSize: "0.9rem", width: 160 }}
+                sx={{
+                  fontSize: "0.9rem",
+                  width: "100%",
+                  "& .MuiOutlinedInput-root": {
+                    border: "none",
+                    "& fieldset": {
+                      border: "none",
+                    },
+                    "&:hover fieldset": {
+                      border: "none",
+                    },
+                    "&.Mui-focused fieldset": {
+                      border: "none",
+                    },
+                    boxShadow: "none",
+                  },
+                }}
               />
               <IconButton onClick={handleSearch}>
                 <Search sx={{ fontSize: "1.2rem" }} />
@@ -133,6 +194,35 @@ function HeaderMidle() {
             </Button>
           </Box>
         )}
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            backgroundColor: "#FBCEB1",
+          }}
+        >
+          <Button
+            component={Link}
+            to="/login"
+            variant="contained"
+            sx={{
+              borderRadius: 3,
+              backgroundColor: "#CD5700",
+            }}
+          >
+            Đăng nhập
+          </Button>
+          <Button
+            component={Link}
+            to="/register"
+            variant="contained"
+            sx={{ borderRadius: 3, backgroundColor: "#CD5700" }}
+          >
+            Đăng kí
+          </Button>
+        </Box>
       </Toolbar>
 
       <Drawer
