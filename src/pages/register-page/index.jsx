@@ -1,70 +1,47 @@
-import { Form, Input, Button, Card, Typography } from "antd";
-import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import "./index.scss";
+import CssBaseline from "@mui/material/CssBaseline";
+import { Stack } from "@mui/material";
+import Content from "@/components/ContentLogin";
+import RegisterCard from "@/components/RegisterCard";
 
-const { Title } = Typography;
-
-const RegisterPage = () => {
-  const handleRegister = (values) => {
-    console.log("Register values:", values);
-  };
-
+export default function RegisterPage() {
   return (
-    <motion.div
-      className="register-container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <Card className="register-card">
-        <Title level={2} className="register-title">
-          Create an Account
-        </Title>
-        <Form layout="vertical" onFinish={handleRegister}>
-          <Form.Item
-            label="Full Name"
-            name="fullName"
-            rules={[{ required: true, message: "Please enter your full name!" }]}
-          >
-            <Input placeholder="Enter your full name" />
-          </Form.Item>
+    <>
+      <CssBaseline />
+      <Stack
+        direction="column"
+        component="main"
+        sx={{
+          justifyContent: "center",
+          height: "100%",
+          minHeight: "100vh",
 
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please enter your email!" }]}
+          background: `linear-gradient(to right, rgba(255, 229, 180, 0.6), rgba(251, 206, 177, 0.6)), 
+          url("https://img.freepik.com/premium-photo/spa-background-natural-spa-cosmetics-products-eco-friendly-bathroom-accessories-flat-lay-top-view_257163-6.jpg?w=1380")`,
+        }}
+      >
+        <Stack
+          direction={{ xs: "column-reverse", md: "row" }}
+          sx={{
+            justifyContent: "center",
+            gap: { xs: 6, sm: 12 },
+            p: 2,
+            mx: "auto",
+          }}
+        >
+          <Stack
+            direction={{ xs: "column-reverse", md: "row" }}
+            sx={{
+              justifyContent: "center",
+              gap: { xs: 6, sm: 12 },
+              p: { xs: 2, sm: 4 },
+              m: "auto",
+            }}
           >
-            <Input placeholder="Enter your email" />
-          </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: "Please enter your password!" }]}
-          >
-            <Input.Password placeholder="Enter your password" />
-          </Form.Item>
-          <Form.Item
-            label="Phone"
-            name="phone"
-            rules={[{ required: true, message: "Please enter your phone!" }]}
-          >
-            <Input type="number" placeholder="Enter your phone" />
-          </Form.Item>
-          <Form.Item>
-            <Button type="primary" htmlType="submit" block>
-              Register
-            </Button>
-          </Form.Item>
-        </Form>
-
-        <div style={{ textAlign: "center", marginTop: "16px" }}>
-          Already have an account? <Link to="/login">Login</Link>
-        </div>
-      </Card>
-    </motion.div>
+            <Content />
+            <RegisterCard />
+          </Stack>
+        </Stack>
+      </Stack>
+    </>
   );
-};
-
-export default RegisterPage;
+}
