@@ -169,7 +169,7 @@ export const handleGetProfile = createAsyncThunk(
   "auth/handleGetProfile",
 
   async (_, thunkApi) => {
-    if (!localToken.get()) {
+    if (!!localToken.get()) {
       try {
         const profile = await authenService.getProfile();
         return profile?.data?.data;
