@@ -63,7 +63,7 @@ const ServicePage = () => {
   const data = [
     {
       stt: 1,
-      name: "Massage Therapy",
+      name: "Massage Therapydddd",
       rating: "⭐⭐⭐⭐⭐",
       description: "A relaxing massage therapy to reduce stress and pain.",
       price: "$50 / session",
