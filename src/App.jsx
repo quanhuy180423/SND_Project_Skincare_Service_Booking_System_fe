@@ -70,10 +70,11 @@ import { useSelector } from "react-redux";
 import RegisterPage from "./pages/register-page";
 import AboutPage from "./pages/about-page";
 import ContactPage from "./pages/contact-page";
-// import PriceListPage from "./pages/prices-list-page";
-// import CheckoutPage from "./pages/checkout-page";
-// import AppointmentPage from "./pages/appointment-page";
-
+import PriceListPage from "./pages/prices-list-page";
+import CheckoutPage from "./pages/checkout-page";
+import BookingPage from "./pages/booking-page";
+// import ServiceDetail from "./pages/service-detail-page";
+//ai làm service detail thì đổi lại folder ở đây nha
 function App() {
   const user = useSelector(selectUser);
 
@@ -89,7 +90,7 @@ function App() {
     if (user == null) {
       toast.error("Bạn cần đăng nhập tài khoản admin trước");
       return <Navigate to="/login" />;
-    } else if (user.role !== "ADMIN") {
+    } else if (user.role !== "admin") {
       toast.error("Bạn không phải là Admin!");
       return <Navigate to="/login" />;
     }
@@ -104,7 +105,10 @@ function App() {
         { index: true, element: <HomePage /> },
         { path: PATHS.ABOUT, element: <AboutPage /> },
         { path: PATHS.CONTACT, element: <ContactPage /> },
-        // { path: PATHS.PRICE_LIST, element: <PriceListPage /> },
+        { path: PATHS.PRICE_LIST, element: <PriceListPage /> },
+        { path: PATHS.CHECKOUT, element: <CheckoutPage /> },
+        { path: PATHS.BOOKING, element: <BookingPage /> },
+        // { path: PATHS.SERVICE_DETAIL, element: <ServiceDetail /> },
       ],
     },
 
