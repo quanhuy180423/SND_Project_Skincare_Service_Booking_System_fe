@@ -68,8 +68,8 @@ import ServicePage from "./pages/service-page";
 import LoginPage from "./pages/login-page";
 import { useSelector } from "react-redux";
 import RegisterPage from "./pages/register-page";
-// import AboutPage from "./pages/about-page";
-// import ContactPage from "./pages/connect-page";
+import AboutPage from "./pages/about-page";
+import ContactPage from "./pages/contact-page";
 // import PriceListPage from "./pages/prices-list-page";
 // import CheckoutPage from "./pages/checkout-page";
 // import AppointmentPage from "./pages/appointment-page";
@@ -102,8 +102,8 @@ function App() {
       element: <MainLayout />,
       children: [
         { index: true, element: <HomePage /> },
-        // { path: PATHS.ABOUT, element: <AboutPage /> },
-        // { path: PATHS.CONTACT, element: <ContactPage /> },
+        { path: PATHS.ABOUT, element: <AboutPage /> },
+        { path: PATHS.CONTACT, element: <ContactPage /> },
         // { path: PATHS.PRICE_LIST, element: <PriceListPage /> },
       ],
     },
