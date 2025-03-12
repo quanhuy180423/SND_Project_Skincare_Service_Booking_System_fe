@@ -1,8 +1,8 @@
 const PRODUCTS_PATH = "/product";
 const PROFILE_PATH = "/profile";
-const PROFILE_ORDER = "/profile/order";
-const PROFILE_ADDRESS = "/profile/address";
-const PROFILE_WISHLIST = "/profile/wishlist";
+// const PROFILE_ORDER = "/profile/order";
+// const PROFILE_ADDRESS = "/profile/address";
+// const PROFILE_WISHLIST = "/profile/wishlist";
 
 export const PATHS = {
   HOME: "/",
@@ -11,12 +11,15 @@ export const PATHS = {
   CART: "/cart",
   CHECKOUT: "/checkout",
   CHECKOUT_SUCCESS: "/checkout_success",
+  BOOKING: "/booking",
   DASHBOARD: "/dashboard",
   USER:"staff",
   MANAGE_CUSTOMER: "customer",
   MANAGE_STAFF: "staff",
   MANAGE_THERAPIST: "therapist",
   SERVICE_PAGE: "service",
+  SERVICE_DETAIL: "/service-detail/:id",
+
   BlogPage:"blog",
   RatingPage:"Rating-FeedbackTherapist",
   ViewSpecialist:"View-specialist-chedule",
@@ -27,14 +30,21 @@ export const PATHS = {
   PRIVACY_POLICY: "/privacy_policy",
   RETURN: "/return",
   SHIPPING: "/shipping",
+  // PROFILE: {
+  //   INDEX: PROFILE_PATH,
+  //   PROFILE_ORDER: PROFILE_ORDER,
+  //   PROFILE_WISHLIST: PROFILE_WISHLIST,
+  //   PROFILE_ADDRESS: PROFILE_ADDRESS,
+  // },
   PROFILE: {
     INDEX: PROFILE_PATH,
-    PROFILE_ORDER: PROFILE_ORDER,
-    PROFILE_WISHLIST: PROFILE_WISHLIST,
-    PROFILE_ADDRESS: PROFILE_ADDRESS,
+    PROFILE_ORDER: PROFILE_PATH + "/order",
+    PROFILE_ADDRESS: PROFILE_PATH + "/address",
+    PROFILE_WISHLIST: PROFILE_PATH + "/wishlist",
   },
   BLOG: "/blog",
   BLOG_DETAIL: "/blog/:slug",
   CONTACT: "/contact",
   ABOUT: "/about",
+  PRICE_LIST: "/price-list"
 };

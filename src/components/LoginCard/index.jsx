@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import { loginSuccess } from "@/store/authSlice";
 import axios from "axios";
@@ -19,10 +19,11 @@ import ForgotPassword from "../ForgotPassword";
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from "../CustomIcons";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 import { login } from "../../redux/features/authSlice";
-// import { store } from "@/redux/store";
+import { store } from "@/redux/store";
 import { useNavigate } from "react-router-dom";
 import { validateLoginForm } from "../../utils/validators";
-
+import { useSelector } from "react-redux";
+import { selectUser, selectTokens } from "../../redux/features/authSlice";
 const API_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const Card = (props) => (
@@ -52,6 +53,14 @@ export default function SignInCard() {
   const [formValues, setFormValues] = useState({ email: "", password: "" });
   const [errors, setErrors] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const user = useSelector(selectUser);
+  const tokens = useSelector(selectTokens);
+
+  useEffect(() => {
+    console.log("Redux state updated:");
+    console.log("User:", user);
+    // console.log("Tokens:", tokens.accessToken);
+  }, [user, tokens]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,9 +68,19 @@ export default function SignInCard() {
   };
 
   const handleSubmit = async (event) => {
-    console.log(API_BASE_URL);
-    // console.log("Dữ liệu gửi lên:", formValues);
+    if (tokens && tokens.accessToken) {
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${tokens.accessToken}`;
+    } else {
+      delete axios.defaults.headers.common["Authorization"];
+    }
+    console.log("handleSubmit được gọi");
+
     event.preventDefault();
+
+    console.log(API_BASE_URL);
+    console.log("Dữ liệu gửi lên:", formValues);
     const { valid, errors } = validateLoginForm(formValues);
     if (!valid) {
       setErrors(errors);
@@ -69,14 +88,17 @@ export default function SignInCard() {
     }
     try {
       const response = await axios.post(`${API_BASE_URL}login`, formValues);
-      // console.log("Dữ liệu từ API:", response.data);
+      console.log("Dữ liệu từ API:", response.data);
 
       dispatch(login(response.data.data));
       navigate("/");
 
-      // setTimeout(() => {
-      //   console.log("Redux State sau khi đăng nhập:", store.getState());
-      // }, 1000);
+      setTimeout(() => {
+        console.log("Redux State sau khi đăng nhập:", store.getState());
+      }, 1000);
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${tokens.accessToken}`;
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials");
     }

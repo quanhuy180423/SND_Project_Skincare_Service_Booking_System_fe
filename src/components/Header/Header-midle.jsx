@@ -19,7 +19,7 @@ import { useTheme } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { logout, selectUser } from "../../redux/features/authSlice";
-
+import UserMenu from "../../components/UserMenu/index";
 // import { handleLogin, handleLogout } from "../../store/Reducer/authReducer";
 
 function HeaderMidle() {
@@ -207,19 +207,20 @@ function HeaderMidle() {
             // Nếu user chưa đăng nhập (user === null) thì hiển thị nút Đăng nhập & Đăng kí,
             // còn nếu đã đăng nhập (user !== null) thì hiển thị nút Logout
             user ? (
-              <Button
-                variant="contained"
-                sx={{
-                  borderRadius: 3,
-                  backgroundColor: "#CD5700",
-                }}
-                onClick={() => {
-                  dispatch(logout());
-                  toast.success("Đăng xuất thành công!");
-                }}
-              >
-                Logout
-              </Button>
+              // <Button
+              //   variant="contained"
+              //   sx={{
+              //     borderRadius: 3,
+              //     backgroundColor: "#CD5700",
+              //   }}
+              //   onClick={() => {
+              //     dispatch(logout());
+              //     toast.success("Đăng xuất thành công!");
+              //   }}
+              // >
+              //   Logout
+              // </Button>
+              <UserMenu />
             ) : (
               <>
                 <Button

@@ -55,7 +55,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import { toast, ToastContainer } from "react-toastify";
-import { selectUser } from "./redux/features/authSlice";
+import { selectTokens, selectUser } from "./redux/features/authSlice";
 import MainLayout from "./layouts/MainLayout";
 import HomePage from "./pages/home";
 import { PATHS } from "./constant/path";
@@ -73,10 +73,24 @@ import ContactPage from "./pages/contact-page";
 import PriceListPage from "./pages/prices-list-page";
 import CheckoutPage from "./pages/checkout-page";
 import BookingPage from "./pages/booking-page";
+// import MyProfile from "./pages/profile-page";
+import AccouncctPage from "./pages/account-page";
+
+import { useEffect } from "react";
+import { setAuthToken } from "./redux/features/axiosInstance";
 // import ServiceDetail from "./pages/service-detail-page";
 //ai làm service detail thì đổi lại folder ở đây nha
 function App() {
   const user = useSelector(selectUser);
+  const tokens = useSelector(selectTokens);
+
+  useEffect(() => {
+    if (tokens && tokens.accessToken) {
+      setAuthToken(tokens.accessToken);
+    } else {
+      setAuthToken(null);
+    }
+  }, [tokens]);
 
   const PrivateRoute = ({ children }) => {
     if (user == null) {
@@ -90,7 +104,7 @@ function App() {
     if (user == null) {
       toast.error("Bạn cần đăng nhập tài khoản admin trước");
       return <Navigate to="/login" />;
-    } else if (user.role !== "admin") {
+    } else if (user.role !== "admin" && user.role !== "staff") {
       toast.error("Bạn không phải là Admin!");
       return <Navigate to="/login" />;
     }
@@ -109,7 +123,17 @@ function App() {
         { path: PATHS.CHECKOUT, element: <CheckoutPage /> },
         { path: PATHS.BOOKING, element: <BookingPage /> },
         // { path: PATHS.SERVICE_DETAIL, element: <ServiceDetail /> },
+        // { path: PATHS.PROFILE, element: <MyProfile /> },
       ],
+    },
+    {
+      path: PATHS.PROFILE.INDEX,
+      element: (
+        <PrivateRoute>
+          <MainLayout />,
+        </PrivateRoute>
+      ),
+      children: [{ index: true, element: <AccouncctPage /> }],
     },
 
     {
